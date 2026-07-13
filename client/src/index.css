@@ -1,0 +1,16 @@
+﻿@import "tailwindcss";
+
+@theme {
+  --color-primary: #14142B;
+  --color-accent: #ff6b35;
+  --color-sand: #FBF3E7;
+  --color-teal: #0F766E;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Sora", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
