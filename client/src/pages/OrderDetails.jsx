@@ -204,6 +204,7 @@ const OrderDetails = () => {
               <p className="text-xs text-gray-400">{order.rider.phone}</p>
             </div>
             
+            <a
               href={riderPhoneLink}
               className="text-xs font-medium bg-orange-50 text-(--color-accent) px-3 py-1.5 rounded-full shrink-0"
             >
@@ -224,3 +225,4 @@ const OrderDetails = () => {
 };
 
 export default OrderDetails;
+
