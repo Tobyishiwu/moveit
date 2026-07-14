@@ -20,7 +20,7 @@ const RiderLocationBroadcaster = ({ orderId }) => {
           });
         },
         (error) => console.error(`Geolocation error [code ${error.code}]: ${error.message}`),
-        { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
+        { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 }
       );
     }
 
@@ -39,3 +39,4 @@ const RiderLocationBroadcaster = ({ orderId }) => {
 };
 
 export default RiderLocationBroadcaster;
+
