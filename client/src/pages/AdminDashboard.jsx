@@ -63,11 +63,11 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10 antialiased text-gray-800 font-sans">
+    <div className="min-h-screen bg-gray-50 px-3 sm:px-4 py-6 sm:py-10 antialiased text-gray-800 font-sans">
       <div className="max-w-4xl mx-auto space-y-8">
         
         {/* Header Title Grid */}
-        <div className="flex justify-between items-end">
+        <div className="flex flex-wrap justify-between items-end gap-2">
           <div>
             <p className="text-xs text-accent font-bold tracking-widest uppercase">Overview</p>
             <h1 className="font-display text-3xl font-black text-gray-900 mt-1 tracking-tight">
@@ -205,3 +205,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
