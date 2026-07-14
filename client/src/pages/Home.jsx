@@ -53,13 +53,13 @@ const Home = () => {
     .reduce((sum, o) => sum + o.fare, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
-      <div className="max-w-2xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gray-50 px-3 sm:px-4 py-6 sm:py-10">
+      <div className="max-w-2xl mx-auto space-y-5 sm:space-y-6">
         <div>
           <p className="text-xs text-(--color-accent) font-semibold tracking-wide">
             {getGreeting().toUpperCase()}
           </p>
-          <h1 className="font-(family-name:--font-display) text-3xl font-bold mt-1">
+          <h1 className="font-(family-name:--font-display) text-2xl sm:text-3xl font-bold mt-1">
             Hi, {user?.name?.split(" ")[0]}
           </h1>
           <p className="text-gray-500 text-sm mt-1">Where's your next package going?</p>
@@ -68,29 +68,29 @@ const Home = () => {
         <Link to="/book" className="block">
           <motion.div
             whileTap={{ scale: 0.98 }}
-            className="bg-(--color-accent) text-white rounded-2xl p-6 flex justify-between items-center cursor-pointer shadow-lg"
+            className="bg-(--color-accent) text-white rounded-2xl p-5 sm:p-6 flex justify-between items-center cursor-pointer shadow-lg gap-3"
           >
-            <div>
-              <p className="font-(family-name:--font-display) text-lg font-bold">Book a delivery</p>
-              <p className="text-sm opacity-90">Fast, reliable, on-demand</p>
+            <div className="min-w-0">
+              <p className="font-(family-name:--font-display) text-base sm:text-lg font-bold">Book a delivery</p>
+              <p className="text-xs sm:text-sm opacity-90">Fast, reliable, on-demand</p>
             </div>
-            <span className="text-2xl">→</span>
+            <span className="text-2xl shrink-0">&rarr;</span>
           </motion.div>
         </Link>
 
         {!loading && orders.length > 0 && (
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-white rounded-xl p-4 text-center">
-              <p className="font-(family-name:--font-mono) text-xl font-semibold">{orders.length}</p>
-              <p className="text-xs text-gray-400 mt-0.5">Total orders</p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="bg-white rounded-xl p-3 sm:p-4 text-center">
+              <p className="font-(family-name:--font-mono) text-lg sm:text-xl font-semibold">{orders.length}</p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Total orders</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center">
-              <p className="font-(family-name:--font-mono) text-xl font-semibold">{deliveredCount}</p>
-              <p className="text-xs text-gray-400 mt-0.5">Delivered</p>
+            <div className="bg-white rounded-xl p-3 sm:p-4 text-center">
+              <p className="font-(family-name:--font-mono) text-lg sm:text-xl font-semibold">{deliveredCount}</p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Delivered</p>
             </div>
-            <div className="bg-white rounded-xl p-4 text-center">
-              <p className="font-(family-name:--font-mono) text-xl font-semibold">{"\u20A6"}{totalSpent}</p>
-              <p className="text-xs text-gray-400 mt-0.5">Total spent</p>
+            <div className="bg-white rounded-xl p-3 sm:p-4 text-center">
+              <p className="font-(family-name:--font-mono) text-lg sm:text-xl font-semibold truncate">{"\u20A6"}{totalSpent}</p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Total spent</p>
             </div>
           </div>
         )}
@@ -107,18 +107,22 @@ const Home = () => {
                 whileTap={{ scale: 0.98 }}
                 className="bg-white rounded-xl shadow-sm p-4 space-y-3 cursor-pointer border border-orange-100"
               >
-                <div className="flex justify-between items-start">
-                  <div className="text-sm">
-                    <p className="font-medium">{activeOrder.pickupAddress}</p>
-                    <p className="text-gray-400">to {activeOrder.dropoffAddress}</p>
+                <div className="flex justify-between items-start gap-2">
+                  <div className="text-sm min-w-0">
+                    <p className="font-medium break-words">{activeOrder.pickupAddress}</p>
+                    <p className="text-gray-400 break-words">to {activeOrder.dropoffAddress}</p>
                   </div>
-                  <span className="bg-orange-50 text-(--color-accent) text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap">
+                  <span className="bg-orange-50 text-(--color-accent) text-[11px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full whitespace-nowrap shrink-0">
                     {STATUS_LABELS[activeOrder.status]}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-sm pt-2 border-t border-gray-100">
-                  <span className="text-gray-500">{activeOrder.packageDescription} &middot; {activeOrder.distanceKm} km</span>
-                  <span className="font-(family-name:--font-display) font-bold">{"\u20A6"}{activeOrder.fare}</span>
+                <div className="flex justify-between items-center text-sm pt-2 border-t border-gray-100 gap-2">
+                  <span className="text-gray-500 text-xs sm:text-sm truncate">
+                    {activeOrder.packageDescription} &middot; {activeOrder.distanceKm} km
+                  </span>
+                  <span className="font-(family-name:--font-display) font-bold shrink-0">
+                    {"\u20A6"}{activeOrder.fare}
+                  </span>
                 </div>
               </motion.div>
             </Link>
@@ -131,12 +135,12 @@ const Home = () => {
             <div className="space-y-2">
               {pastOrders.map((order) => (
                 <Link key={order._id} to={"/orders/" + order._id} className="block">
-                  <div className="bg-white rounded-xl shadow-sm p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50 transition">
-                    <div className="text-sm">
-                      <p className="font-medium">{order.pickupAddress}</p>
-                      <p className="text-gray-400">to {order.dropoffAddress}</p>
+                  <div className="bg-white rounded-xl shadow-sm p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50 transition gap-2">
+                    <div className="text-sm min-w-0">
+                      <p className="font-medium truncate">{order.pickupAddress}</p>
+                      <p className="text-gray-400 truncate">to {order.dropoffAddress}</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right shrink-0">
                       <p className={"text-xs font-medium " + (order.status === "delivered" ? "text-green-600" : "text-red-500")}>
                         {STATUS_LABELS[order.status]}
                       </p>
@@ -150,10 +154,10 @@ const Home = () => {
         )}
 
         {!loading && orders.length === 0 && (
-          <div className="bg-white rounded-2xl p-8 text-center">
-            <span className="text-3xl">📦</span>
+          <div className="bg-white rounded-2xl p-6 sm:p-8 text-center">
+            <span className="text-3xl">&#128230;</span>
             <p className="font-(family-name:--font-display) font-bold mt-3">No deliveries yet</p>
-            <p className="text-gray-400 text-sm mt-1">Book your first one above — it takes less than a minute.</p>
+            <p className="text-gray-400 text-sm mt-1">Book your first one above &mdash; it takes less than a minute.</p>
           </div>
         )}
       </div>
