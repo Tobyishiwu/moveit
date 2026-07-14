@@ -63,14 +63,14 @@ const BookDelivery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-3 sm:px-4 py-6 sm:py-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8"
+        className="w-full max-w-md bg-white rounded-2xl shadow-xl p-5 sm:p-8"
       >
-        <h1 className="text-2xl font-bold mb-1">Book a delivery</h1>
+        <h1 className="text-xl sm:text-2xl font-bold mb-1">Book a delivery</h1>
         <p className="text-gray-500 mb-6 text-sm">
           Send a package anywhere, fast and reliable.
         </p>
@@ -211,3 +211,6 @@ const BookDelivery = () => {
 };
 
 export default BookDelivery;
+
+
+
